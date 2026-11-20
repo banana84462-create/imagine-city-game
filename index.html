@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagine City</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body,
+        body * {
+            font-family: 'Prompt', sans-serif !important;
+        }
+
+        .english,
+        .english * {
+            font-family: 'Agrave Pro', sans-serif !important;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        button {
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <!-- หน้าเริ่มเกม -->
+        
+<section id="start-screen" class="screen active">
+
+    <!-- หน้ากระดาษฝั่งซ้าย -->
+    <div class="story-content">
+
+        <h1>IMAGINE CITY</h1>
+
+        <h2>คืนสุดท้ายก่อนสีจะหายไป</h2>
+
+        <div class="intro-text">
+    <p>
+        คืนนี้สีสันของ Imagine City กำลังจะหายไปทั้งเมือง
+        และมีเธอเป็นคนเดียวที่ช่วยได้
+        เมืองที่เคยเต็มไปด้วยภาพวาด ป้ายไฟ เสียงเพลง
+        และเกมที่ใครก็เล่นได้ กำลังจะกลายเป็นสีเทา
+        ดวงไฟดวงเล็ก ๆ จะนำทางเธอไปตลอดการเดินทาง
+        แต่ทุกการตัดสินใจจะเป็นของเธอเอง
+    </p>
+</div>
+
+        <button onclick="startGame()">
+            เริ่มการเดินทาง →
+        </button>
+
+    </div>
+
+    <!-- ภาพประกอบฝั่งขวา -->
+    <div class="story-art">
+        <div class="art-placeholder">
+            IMAGINE CITY
+        </div>
+    </div>
+
+</section>
+
+
+<!-- หน้าก่อนออกเดินทาง -->
+<section id="instruction-screen" class="screen">
+
+    <div class="story-content">
+
+        <h1>ก่อนออกเดินทาง</h1>
+
+        <h2 class="english">BEFORE THE JOURNEY</h2>
+        <div class="story-art">
+        <img src="images/city-intro.jpg" alt="Imagine City">
+    </div>
+
+    <div class="intro-text">
+        <p>คืนนี้สีสันของ Imagine City กำลังจะหายไปทั้งเมือง และมีเธอเป็นคนเดียวที่ช่วยได้ เมืองที่เคยเต็มไปด้วยภาพวาด ป้ายไฟ เสียงเพลง และเกมที่ใครก็เล่นได้ กำลังจะกลายเป็นสีเทา ดวงไฟดวงเล็ก ๆ จะนำทางเธอไปตลอดการเดินทาง แต่ทุกการตัดสินใจจะเป็นของเธอเอง</p>
+    </div>
+
+        <div class="how-to-play">
+            <h3>วิธีเล่น</h3>
+
+            <p>01 — ไม่มีคำตอบถูกหรือผิด เลือกข้อที่ใกล้ใจเธอที่สุด</p>
+            <p>02 — อย่าคิดนาน ข้อที่นึกถึงก่อนมักเป็นข้อที่ใช่</p>
+            <p>03 — เดินทางไปจนถึงคืนเทศกาล เพื่อค้นพบตัวตนของเธอ</p>
+        </div>
+
+        <button onclick="beginAdventure()">
+            ออกเดินทาง →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- หน้าคำถาม -->
+
+<!-- หน้าคำถาม -->
+<section id="game-screen" class="screen">
+ <div class="game-progress">
+    <div class="game-progress-fill" id="game-progress-fill"></div>
+ </div>
+
+    <div class="story-content">
+
+        <p id="chapter">บทที่ 1</p>
+
+        <h2 id="question-title"></h2>
+
+        <!-- คำบรรยาย -->
+        <div class="intro-text">
+            <p id="question-description"></p>
+        </div>
+
+        <!-- ภาพประกอบประจำฉาก -->
+        <div class="story-art" id="question-art" style="display: none;">
+            <img id="question-image" src="" alt="ภาพประกอบฉาก">
+        </div>
+
+        <!-- ตัวเลือกคำตอบ -->
+        <div id="answer-list"></div>
+
+        <p id="progress"></p>
+
+    </div>
+
+</section>
+
+<!-- หน้าผลลัพธ์ -->
+<section id="result-screen" class="screen">
+
+    <div class="story-content">
+        <h1 id="result-title">ผลการเดินทาง</h1>
+        <p id="result-description"></p>
+    </div>
+
+</section>
+
+
+<!-- หน้าบทที่ 3 เลือกย่าน -->
+<section id="district-screen" class="screen">
+
+    <div class="story-content">
+        <p>บทที่ 3</p>
+        <h1>ย่านของเธอ</h1>
+
+        <div class="intro-text">
+            <p id="district-description">
+                ดวงไฟพาเธอเดินเข้าไปในย่านที่ใกล้ตัวเธอที่สุด
+            </p>
+        </div>
+
+        <div id="district-list"></div>
+    </div>
+
+    <div class="story-art">
+        <img id="district-image"
+             src="images/district.jpg"
+             alt="ย่านของ Imagine City">
+    </div>
+
+</section>
+
+<!-- หน้าบัตรผ่านนักเดินทาง -->
+<section id="registration-screen" class="screen">
+
+    <div class="story-content">
+        <p>IMAGINE CITY</p>
+        <h1>บัตรผ่านนักเดินทาง</h1>
+
+        <div class="intro-text">
+            <p>
+                ก่อนเดินทางออกจากเมือง
+                เราอยากรู้จักเธอมากขึ้นอีกนิด
+                ข้อมูลเหล่านี้สามารถข้ามได้
+            </p>
+        </div>
+
+        <form id="registration-form">
+
+            <label>ชื่อเล่น</label>
+            <input type="text" id="nickname" placeholder="ชื่อที่อยากให้เราเรียก">
+
+            <label>ระดับการศึกษาปัจจุบัน</label>
+            <select id="education">
+                <option value="">เลือกคำตอบ</option>
+                <option>ม.4</option>
+                <option>ม.5</option>
+                <option>ม.6</option>
+                <option>ปวช.</option>
+                <option>ปวส.</option>
+                <option>อื่น ๆ</option>
+            </select>
+
+            <label>จังหวัด</label>
+            <input type="text" id="province" placeholder="จังหวัดของเธอ">
+
+            <button type="submit" class="answer-button">
+                ยืนยันบัตรผ่าน
+            </button>
+
+        </form>
+    </div>
+
+    <div class="story-art">
+        <img src="images/registration.jpg"
+             alt="บัตรผ่านนักเดินทาง">
+    </div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
