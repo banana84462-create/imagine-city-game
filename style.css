@@ -575,3 +575,159 @@ body {
     object-fit: contain !important;
     margin: 0 auto !important;
 }
+
+
+/* =================================
+   RESPONSIVE : TABLET & MOBILE
+================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .game-container {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    .story-content {
+        padding: 35px 25px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+        padding: 0;
+    }
+
+    .game-container {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+
+    /* จัดหน้าให้เป็นแนวตั้ง */
+    #start-screen.screen.active {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    #start-screen .story-content {
+        width: 100%;
+        padding: 35px 22px;
+        transform: none;
+    }
+
+    /* ขนาดหัวข้อ */
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    #start-screen h1 {
+        font-size: 55px;
+    }
+
+    /* หน้าคำถามและหน้าอื่น ๆ */
+    #instruction-screen.screen.active,
+    #game-screen.screen.active,
+    #district-screen.screen.active,
+    #registration-screen.screen.active,
+    #result-screen.screen.active {
+        min-height: 100vh;
+        padding: 45px 16px 25px;
+    }
+
+    .story-content {
+        width: 100%;
+        padding: 15px 5px;
+        gap: 12px;
+    }
+
+    /* ข้อความ */
+    p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #game-screen #question-description {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+
+    /* ภาพประกอบ */
+    .story-art {
+        max-width: 100%;
+    }
+
+    .story-art img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    #game-screen #question-art {
+        width: 220px !important;
+        max-width: 85vw !important;
+    }
+
+    #game-screen #question-art img {
+        height: 160px !important;
+        object-fit: contain !important;
+    }
+
+    /* ปุ่มคำตอบ */
+    #game-screen #answer-list,
+    #district-screen #district-list {
+        width: 100%;
+    }
+
+    #game-screen .answer-button,
+    #district-screen .district-button {
+        min-height: 55px;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+
+    button {
+        max-width: 100%;
+        font-size: 15px;
+    }
+
+    /* วิธีเล่น */
+    #instruction-screen .how-to-play {
+        margin: 15px auto;
+    }
+
+    #instruction-screen .how-to-play p {
+        font-size: 14px;
+        padding: 14px 8px;
+    }
+
+    /* แถบความคืบหน้า */
+    .game-progress {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        height: 12px;
+    }
+
+    /* ฟอร์ม */
+    #registration-form {
+        width: 100%;
+    }
+
+    #registration-form input,
+    #registration-form select {
+        font-size: 16px;
+    }
+
+}
